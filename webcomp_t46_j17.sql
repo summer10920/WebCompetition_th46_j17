@@ -22,7 +22,8 @@ SET time_zone = "+00:00";
 -- 資料庫： `webcomp_t46_j17`
 --
 
--- --------------------------------------------------------
+CREATE DATABASE IF NOT EXISTS `webcomp_t46_j17` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE `webcomp_t46_j17`;
 
 --
 -- 資料表結構 `pk`
