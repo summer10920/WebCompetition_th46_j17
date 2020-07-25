@@ -2,7 +2,6 @@
 $backsite=true;
 include("api.php");
 if($_SESSION['who']=="guest") echo '<script>alert("尚未登入");location.href="index.php";</script>';
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,12 +42,12 @@ if($_SESSION['who']=="guest") echo '<script>alert("尚未登入");location.href=
     <h2>玩家留言版後台管理</h2>
     <!-- <a href="#msgadd" class="btn btn-info" data-toggle="modal" style="float:right">我要留言</a> -->
     <div style="clear: both;"></div>
-    <?php include("talklist.php") ?>
+    <?php include("msg.php") ?>
   </section>
 
   <footer>
-    <!-- for backsite modify talklist -->
-    <form id="talkmdy" class="modal hide fade form-horizontal" action="api.php?do=talkmdy" method="post">
+    <!-- for backsite modify msglist -->
+    <form id="msgmdy" class="modal hide fade form-horizontal" action="api.php?do=msgmdy" method="post">
       <div class="modal-header">
         <h3>編輯留言</h3>
         <input type="hidden" name="id">

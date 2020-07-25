@@ -3,10 +3,10 @@ body {
   background: linear-gradient(90deg, #4e0064, #888);
   font-family: Arial, "微軟正黑體";
   font-size: 1rem;
-  box-sizing: border-box;
-  text-align: center;
   font-weight: bold;
+  text-align: center;
   color: #333;
+  box-sizing: border-box;
 }
 
 .container {
@@ -39,8 +39,8 @@ nav {
 .ad p {
   width: 940px;
   padding: 20px;
-  background: #44444444;
-  color: white;
+  background: #4444;
+  color: #eee;
 }
 
 section:not(.ad) {
@@ -71,8 +71,17 @@ p {
   padding: 10px 0;
 }
 
+.del {
+  padding: 10px 0;
+  opacity: 0.5;
+  color: red;
+}
+.del div {
+  min-height: unset !important;
+}
+
 table * {
-  color: white;
+  color: #eee;
   text-align: center !important;
 }
 
@@ -81,10 +90,10 @@ td {
 }
 
 tbody tr:nth-child(odd) > td {
-  background: #ff000066 !important;
+  background: #f006 !important;
 }
 tbody tr:nth-child(even) > td {
-  background: #0000ff66 !important;
+  background: #00f6 !important;
 }
 tbody img {
   border-radius: 10%;
@@ -94,13 +103,4 @@ tbody img {
 
 footer {
   margin-top: 80px;
-}
-
-.del {
-  padding: 10px 0;
-  opacity: 0.5;
-  color: red;
-}
-.del div {
-  min-height: unset !important;
 }

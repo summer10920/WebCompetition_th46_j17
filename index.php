@@ -1,6 +1,7 @@
 <?php
 $backsite = false;
 include("api.php");
+$_SESSION['rand']=rand(1000, 9999);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +19,7 @@ include("api.php");
 <body>
   <!--網站標題-->
   <header class="row-fluid">
-    <div class="span4">第46屆全國競賽電競遊 官方網站</div>
+    <div class="span4">第50屆全國競賽電競遊 官方網站</div>
     <div class="span8"></div>
   </header>
 
@@ -31,7 +32,7 @@ include("api.php");
           <!-- <li class="active"><a href="#">Home</a></li> -->
           <li><a href="#">回首頁</a></li>
           <li><a href="#msg">玩家留言板</a></li>
-          <li><a href="#pklist">最新消息與賽制公告區塊</a></li>
+          <li><a href="#pk">最新消息與賽制公告區塊</a></li>
           <li><a href="#pkadd" data-toggle="modal">玩家參賽</a></li>
           <?php
           if ($_SESSION['who'] != "guest") echo '<li><a href="admin.php">網站管理</a></li>';
@@ -57,7 +58,7 @@ include("api.php");
     <div style="clear: both;"></div>
 
     <!-- data each-->
-    <?php include("talklist.php") ?>
+    <?php include("msg.php") ?>
   </section>
   <!-- 賽事版 -->
   <div id="pklist"></div>
@@ -75,13 +76,13 @@ include("api.php");
         </tr>
       </thead>
       <tbody>
-        <?php include("pklist.php")?>
+        <?php include("pk.php") ?>
       </tbody>
     </table>
   </section>
   <footer>
     <!-- Modal -->
-    <form id="msgadd" class="modal hide fade form-horizontal" action="api.php?do=talkadd" method="post">
+    <form id="msgadd" class="modal hide fade form-horizontal" action="api.php?do=msgadd" method="post">
       <div class="modal-header">
         <h3>新增留言</h3>
       </div>
@@ -92,7 +93,7 @@ include("api.php");
         </div>
         <div class="control-group">
           <label class="control-label">留言內容</label>
-          <textarea name="msg" required></textarea>
+          <textarea name="info" required></textarea>
         </div>
         <div class="control-group">
           <label class="control-label">Email</label>
@@ -185,11 +186,10 @@ include("api.php");
                 <path class="st0" d="M44.1,6c0.8,3,1.3,5,1.9,7.7C40.6,12.3,39.3,10.6,44.1,6z" />
               </g>
               <rect x="1" y="3" class="st1" width="98" height="24" />
-              <text transform="matrix(1 0 0 1 12.505 23.5904)" class="st2 st3 st4"><?= $rand ?></text>
+              <text transform="matrix(1 0 0 1 12.505 23.5904)" class="st2 st3 st4"><?= $_SESSION['rand'] ?></text>
             </svg>
           </label>
           <input type="text" name="ans" required>
-          <input type="hidden" name="check" value="<?= $rand ?>">
         </div>
       </div>
       <div class="modal-footer">
