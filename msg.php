@@ -1,5 +1,5 @@
 <?php
-if ($_SESSION['who'] == "guest" || $_SESSION['who'] == "admin") {
+if ($_SESSION['user'] == "guest" || $_SESSION['user'] == "admin") {
   $rows = $db->query("SELECT * FROM msg")->fetchAll();
 } else {
   $rows = $db->query("SELECT * FROM msg WHERE user='" . $_SESSION['user'] . "' AND mail='" . $_SESSION['pwd'] . "'")->fetchAll();

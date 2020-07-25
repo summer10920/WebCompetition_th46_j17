@@ -35,7 +35,7 @@ $_SESSION['rand']=rand(1000, 9999);
           <li><a href="#pk">最新消息與賽制公告區塊</a></li>
           <li><a href="#pkadd" data-toggle="modal">玩家參賽</a></li>
           <?php
-          if ($_SESSION['who'] != "guest") echo '<li><a href="admin.php">網站管理</a></li>';
+          if ($_SESSION['user'] != "guest") echo '<li><a href="admin.php">網站管理</a></li>';
           else echo '<li><a href="#login" data-toggle="modal">網站管理</a></li>';
           ?>
         </ul>
