@@ -1,25 +1,32 @@
 <?php
 $rows = $db->query("SELECT * FROM pk")->fetchAll();
 
-$data = [];
+$data = array();
 foreach ($rows as $row) $data[] = [$row['user'], $row['info']];
-$data = array_reverse($data);
 $num = ceil(count($data) / 2);
 
 for ($i = 1; $i <= $num; $i++) {
-  $item = array_pop($data);
 ?>
   <tr>
-    <td><?= $i ?></td>
-    <td><img src="img/<?= $item[1] ?>"></td>
-    <td><?= $item[0] ?></td>
-    <td>VS</td>
-    <?php
-    $item = array_pop($data);
-    if ($item)
-      echo '<td>' . $item[0] . '</td><td><img src="img/' . $item[1] . '"></td>';
-    else
-      echo '<td>人數不足配對中</td><td></td>';
+    <?php 
+      echo '<td>'.$i.'</td>';
+
+      $item = array_shift($data); 
+      echo '
+        <td><img src="img/'.$item[1].'"></td>
+        <td>'.$item[0].'</td>
+        <td>VS</td>
+      ';
+
+      $item = array_shift($data);
+      if($item) echo '
+        <td>'.$item[0].'</td>
+        <td><img src="img/'.$item[1].'"></td>
+      ';
+      else echo '
+        <td>等待匹配中。..</td>
+        <td></td>
+      ';
     ?>
   </tr>
 <?php

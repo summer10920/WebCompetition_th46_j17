@@ -1,7 +1,8 @@
 <?php
-$backsite=true;
 include("api.php");
-if($_SESSION['who']=="guest") echo '<script>alert("尚未登入");location.href="index.php";</script>';
+if ($_SESSION['user'] == 'guest' || empty($_SESSION['user']))
+  echo "<script>alert('你沒有訪問權限，請回前台登入');location.href='index.php';</script>";
+$frontsite=FALSE;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,7 +20,7 @@ if($_SESSION['who']=="guest") echo '<script>alert("尚未登入");location.href=
 <body>
   <!--網站標題-->
   <header class="row-fluid">
-    <div class="span4">第46屆全國競賽電競遊 官方網站</div>
+    <div class="span4">第 50 屆全國競賽電競遊 官方網站</div>
     <div class="span8"></div>
   </header>
 
@@ -27,9 +28,7 @@ if($_SESSION['who']=="guest") echo '<script>alert("尚未登入");location.href=
   <nav class="navbar navbar-inverse">
     <div class="navbar-inner">
       <div class="container">
-        <!-- <a class="brand" href="#">Title</a> -->
         <ul class="nav">
-          <!-- <li class="active"><a href="#">Home</a></li> -->
           <li><a href="index.php">回前台首頁</a></li>
           <li><a href="api.php?do=logout">管理登出</a></li>
         </ul>
@@ -37,16 +36,14 @@ if($_SESSION['who']=="guest") echo '<script>alert("尚未登入");location.href=
     </div>
   </nav>
 
-  <!-- 留言板管理 -->
+  <!-- 留言板 -->
+  <div id="msg"></div>
   <section class="container">
-    <h2>玩家留言版後台管理</h2>
-    <!-- <a href="#msgadd" class="btn btn-info" data-toggle="modal" style="float:right">我要留言</a> -->
-    <div style="clear: both;"></div>
-    <?php include("msg.php") ?>
+    <h2>玩家留言板</h2>
+    <?php include('msg.php') ?>
   </section>
-
   <footer>
-    <!-- for backsite modify msglist -->
+    <!-- for admin to msgmdy-->
     <form id="msgmdy" class="modal hide fade form-horizontal" action="api.php?do=msgmdy" method="post">
       <div class="modal-header">
         <h3>編輯留言</h3>
@@ -59,7 +56,7 @@ if($_SESSION['who']=="guest") echo '<script>alert("尚未登入");location.href=
         </div>
         <div class="control-group">
           <label class="control-label">留言內容</label>
-          <textarea name="msg" required>Old Message....</textarea>
+          <textarea name="info" required>Old Message....</textarea>
         </div>
         <div class="control-group">
           <label class="control-label">Email</label>

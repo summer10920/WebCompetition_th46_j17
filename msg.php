@@ -1,52 +1,51 @@
 <?php
-if ($_SESSION['user'] == "guest" || $_SESSION['user'] == "admin") {
-  $rows = $db->query("SELECT * FROM msg")->fetchAll();
-} else {
-  $rows = $db->query("SELECT * FROM msg WHERE user='" . $_SESSION['user'] . "' AND mail='" . $_SESSION['pwd'] . "'")->fetchAll();
-}
+if ($frontsite || $_SESSION['user'] == 'admin')
+  $sql = "SELECT * FROM msg";
+else
+  $sql = "SELECT * FROM msg WHERE user='{$_SESSION['user']}' AND mail='{$_SESSION['mail']}'";
 
+$rows = $db->query($sql)->fetchAll();
 foreach ($rows as $row) {
-  if ($row['del']) {
+  if ($row['del']) { //del
 ?>
+    <!-- each del -->
     <div class="thumbnail row-fluid del">
       <div class="span2">#<?= $row['id'] ?></div>
-      <div class="span10">本篇已被刪除</div>
+      <div class="span10">此樓留言已被刪除</div>
     </div>
   <?php
   } else {
   ?>
+    <!-- each ok -->
     <div class="thumbnail row-fluid">
-      <div class="caption span2">
+      <div class="span2">
         <img src="img/user.jpg" class="img-circle" width="100" height="100">
         <h4><?= $row['user'] ?></h4>
         <h5>#<span class="sn"><?= $row['id'] ?></span></h5>
       </div>
-      <div class="caption span10">
-        <p><?= $row['info'] ?></p>
+      <div class="span10">
+        <p class="info"><?= $row['info'] ?></p>
         <div class="bottom">
           <span class="badge badge-info">
-            <span>&phone;</span>
-            <span class="tel"><?= $row['tel'] ?></span>
+            &phone; <span class="tel"><?= $row['tel'] ?></span>
           </span>
           <span class="badge badge-info">
-            <i class="icon-envelope icon-white"></i>
-            <span class="mail"><?= $row['mail'] ?></span>
+            <i class="icon-envelope icon-white"></i> <span class="mail"><?= $row['mail'] ?></span>
           </span>
           <span class="badge badge-info">
-            <i class="icon-time icon-white"></i>
-            <span><?= $row['date'] ?></span>
+            <i class="icon-time icon-white"></i> <?= $row['date'] ?>
           </span>
-          <!-- for admin -->
+
+          <!-- for admin use -->
           <?php
-          if ($backsite) {
-          ?>
+          if (!$frontsite) echo '
             <span class="control">
               <a href="#msgmdy" class="btn btn-warning" data-toggle="modal" onclick="setval(this)">編輯</a>
-              <a href="api.php?do=msgdel&id=<?= $row['id'] ?>" class="btn btn-danger">刪除</a>
+              <a href="api.php?do=msgdel&id=' . $row['id'] . '" class="btn btn-danger">刪除</a>
             </span>
-          <?php
-          }
+          ';
           ?>
+
         </div>
       </div>
     </div>

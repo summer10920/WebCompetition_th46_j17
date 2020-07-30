@@ -1,24 +1,29 @@
-/*通用 與 BS 修改*/
-body {
-  background: linear-gradient(90deg, #4e0064, #888);
+/*環境調整*/
+* {
   font-family: Arial, "微軟正黑體";
-  font-size: 1rem;
-  font-weight: bold;
   text-align: center;
-  color: #333;
+}
+section, div, p {
   box-sizing: border-box;
 }
-
+body {
+  background: linear-gradient(90deg, #4e0064, #888);
+  color: #333;
+  font-weight: bold;
+  font-size: 1rem;
+}
 .container {
   width: 940px !important;
 }
 
-/*自訂*/
+/* 網站標題 */
 header {
-  background: white;
+  background: #eee;
   line-height: 100px;
   height: 100px;
 }
+
+/* 選單區 */
 nav ul {
   float: right !important;
 }
@@ -26,69 +31,64 @@ nav {
   position: sticky;
   top: 0;
   margin-bottom: 0 !important;
-  z-index: 999;
+  z-index: 99;
 }
 
+/* 廣告主題 */
 .ad {
-  background: url("https://picsum.photos/1920/400/?random=1") center no-repeat;
+  background: url("../img/bg.jpg") center no-repeat;
   height: 400px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .ad p {
-  width: 940px;
   padding: 20px;
-  background: #4444;
+  background: #ccc8;
   color: #eee;
 }
 
+/* 留言板 */
 section:not(.ad) {
   background: #333;
-  padding: 20px 40px;
+  padding: 20px;
   margin-top: 80px;
   min-height: calc(100vh - 160px);
 }
-
 h2 {
-  color: white;
+  color: #eee;
 }
-
 .row-fluid {
   background: #eee;
-  padding: 0;
+  padding: 10px;
   margin-top: 10px;
 }
-
 p {
   min-height: 100px;
   text-align: left;
 }
-
 .bottom {
   text-align: right;
   border-top: 1px dotted #333;
   padding: 10px 0;
 }
-
 .del {
   padding: 10px 0;
-  opacity: 0.5;
   color: red;
+  opacity: 0.5;
 }
 .del div {
   min-height: unset !important;
 }
 
+/* 賽事版 */
 table * {
   color: #eee;
   text-align: center !important;
 }
-
 td {
   vertical-align: middle !important;
 }
-
 tbody tr:nth-child(odd) > td {
   background: #f006 !important;
 }
@@ -101,6 +101,7 @@ tbody img {
   width: 50px;
 }
 
+/* modal */
 footer {
   margin-top: 80px;
 }
